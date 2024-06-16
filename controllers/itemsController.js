@@ -102,3 +102,23 @@ export const deleteItem = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+export const getSingleItem = async (req, res) => {
+  try {
+    const itemId = req.params.id;
+
+    // Validate the itemId format if needed (optional)
+
+    // Find the item by its ID
+    const item = await Item.findById(itemId);
+
+    if (!item) {
+      return res.status(404).json({ error: "Item not found" });
+    }
+
+    res.status(200).json(item);
+  } catch (error) {
+    console.error("Error fetching item:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+};

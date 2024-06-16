@@ -36,7 +36,6 @@ const itemsSchema = mongoose.Schema(
     },
     detail: {
       type: String,
-      required: true,
     },
     image: {
       type: Array,
